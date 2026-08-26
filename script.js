@@ -1,17 +1,13 @@
-// ================= ГЕНЕРАЦИЯ СВЕТЛЯЧКОВ =================
-const particlesContainer = document.getElementById('particles');
-if (particlesContainer) {
-    for (let i = 0; i < 50; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.width = Math.random() * 5 + 2 + 'px';
-        particle.style.height = particle.style.width;
-        particle.style.animationDuration = Math.random() * 10 + 5 + 's';
-        particle.style.animationDelay = Math.random() * 10 + 's';
-        particle.style.opacity = Math.random() * 0.7 + 0.3;
-        particlesContainer.appendChild(particle);
-    }
+// ================= СВЕТЛЯЧКИ =================
+for (let i = 0; i < 30; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.width = Math.random() * 5 + 2 + 'px';
+    particle.style.height = particle.style.width;
+    particle.style.animationDuration = Math.random() * 10 + 8 + 's';
+    particle.style.animationDelay = Math.random() * 10 + 's';
+    document.body.appendChild(particle);
 }
 
 // ================= МОДАЛКИ =================
@@ -26,7 +22,6 @@ function openMapModal(title) {
 }
 
 function downloadMap() {
-    // ЗАМЕНИ НА СВОЮ ССЫЛКУ
     window.location.href = 'maps/map.rar';
     closeModal('mapModal');
 }
@@ -44,7 +39,6 @@ function openCreatorModal(name) {
     
     const shapesBg = document.getElementById('shapesBg');
     
-    // Золотые фигуры для Okone и Ustreal
     if (name === 'Okone' || name === 'Ustreal') {
         for (let i = 0; i < 15; i++) {
             const shape = document.createElement('div');
@@ -54,14 +48,10 @@ function openCreatorModal(name) {
             shape.style.height = size + 'px';
             shape.style.left = Math.random() * 100 + '%';
             shape.style.top = Math.random() * 100 + '%';
-            if (Math.random() > 0.5) {
-                shape.style.borderRadius = '50%';
-            }
+            if (Math.random() > 0.5) shape.style.borderRadius = '50%';
             shapesBg.appendChild(shape);
         }
-    } 
-    // Изумрудные командные блоки для YaychaMegatrona и o666rn
-    else {
+    } else {
         for (let i = 0; i < 10; i++) {
             const block = document.createElement('div');
             block.className = 'command-block';
