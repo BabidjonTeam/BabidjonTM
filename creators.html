@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создатели — BBJN TEAM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <span class="logo-icon"></span> BBJN
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="resources.html">Ресурсы</a></li>
+                <li><a href="maps.html">Карты</a></li>
+                <li><a href="creators.html" class="active">Создатели</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <h1 class="page-title">Создатели</h1>
+
+        <div class="item-list">
+            <div class="item" onclick="openCreatorModal('Okone')">Okone</div>
+            <div class="item" onclick="openCreatorModal('YaychaMegatrona')">YaychaMegatrona</div>
+            <div class="item" onclick="openCreatorModal('o666rn')">o666rn</div>
+            <div class="item" onclick="openCreatorModal('Ustreal')">Ustreal</div>
+        </div>
+    </main>
+
+    <div class="modal-overlay" id="creatorModal">
+        <div class="modal">
+            <div class="shapes-bg" id="shapesBg"></div>
+            <h3 id="creatorName"></h3>
+            <p id="creatorRole"></p>
+            <div class="modal-buttons">
+                <button class="btn-back" onclick="closeModal('creatorModal')">Назад</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
