@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карты — BABIDJON TEAM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+
+    <header>
+        <a href="index.html" class="logo">BABIDJON</a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="resources.html">Ресурсы</a></li>
+                <li><a href="maps.html" class="active">Карты</a></li>
+                <li><a href="creators.html">Создатели</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="page-title">Наши карты</h1>
+        <p class="page-desc">Нажмите на карту, чтобы скачать её</p>
+
+        <div class="item-list">
+            <div class="item" onclick="openMapModal('Побег Димы Масленникова')">Побег Димы Масленникова</div>
+        </div>
+    </main>
+
+    <div class="modal-overlay" id="mapModal">
+        <div class="modal">
+            <h3 id="mapTitle"></h3>
+            <div class="modal-buttons">
+                <button class="btn-download" onclick="downloadMap()">Скачать</button>
+                <button class="btn-back" onclick="closeModal('mapModal')">Назад</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
