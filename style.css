@@ -1,13 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Unbounded:wght@400;900&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 :root {
     --bg: #000;
     --text: #fff;
     --border: #333;
     --neon: rgba(255, 255, 255, 0.8);
 }
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     background: var(--bg);
@@ -18,98 +22,100 @@ body {
     flex-direction: column;
 }
 
-/* Навигация */
+/* НАВИГАЦИЯ */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 50px;
+    padding: 20px 40px;
     border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
     background: #000;
-    z-index: 100;
+    z-index: 1000;
 }
 
 .logo {
     font-family: 'Unbounded', sans-serif;
     font-weight: 900;
-    font-size: 20px;
+    font-size: 18px;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--text);
     text-decoration: none;
+    color: var(--text);
+    letter-spacing: 2px;
     text-shadow: 0 0 10px var(--neon);
 }
 
 nav ul {
     display: flex;
-    list-style: none;
     gap: 30px;
+    list-style: none;
 }
 
 nav a {
     color: var(--text);
     text-decoration: none;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    position: relative;
+    transition: 0.3s;
 }
 
 nav a.active {
     text-shadow: 0 0 15px var(--neon);
+    border-bottom: 2px solid var(--text);
+    padding-bottom: 2px;
 }
 
-nav a.active::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--text);
-    box-shadow: 0 0 10px var(--neon);
+nav a:hover {
+    text-shadow: 0 0 15px var(--neon);
 }
 
-/* Основной контейнер */
+/* КОНТЕНТ */
 main {
     flex: 1;
-    padding: 60px 50px;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
+    padding: 60px 20px;
     width: 100%;
 }
 
 .page-title {
     font-family: 'Unbounded', sans-serif;
-    font-size: 50px;
     font-weight: 900;
+    font-size: 40px;
     text-transform: uppercase;
     text-align: center;
-    margin-bottom: 60px;
-    text-shadow: 0 0 20px var(--neon);
+    margin-bottom: 50px;
+    letter-spacing: 5px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
-/* Главная (Glitch) */
-.hero {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 70vh;
+/* ГЛАВНАЯ СТРАНИЦА */
+.hero-container {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 80px;
+}
+
+.hero-desc {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #ccc;
 }
 
 .glitch {
     font-family: 'Unbounded', sans-serif;
-    font-size: 80px;
+    font-size: 70px;
     font-weight: 900;
-    letter-spacing: 8px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-align: center;
     position: relative;
     color: #fff;
-    text-shadow: 0 0 20px var(--neon);
-    animation: glitch 3s infinite;
-    text-align: center;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+    animation: glitch 4s infinite;
 }
 
 .glitch::before,
@@ -123,15 +129,13 @@ main {
 }
 
 .glitch::before {
-    animation: glitchTop 3s infinite;
     clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-    opacity: 0.7;
+    animation: glitchTop 4s infinite;
 }
 
 .glitch::after {
-    animation: glitchBottom 3s infinite;
     clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-    opacity: 0.7;
+    animation: glitchBottom 4s infinite;
 }
 
 @keyframes glitch {
@@ -144,19 +148,58 @@ main {
 
 @keyframes glitchTop {
     0%, 100% { transform: translate(0); }
-    25% { transform: translate(-3px, -2px); }
-    50% { transform: translate(3px, 2px); }
+    25% { transform: translate(-4px, -2px); }
+    50% { transform: translate(4px, 2px); }
     75% { transform: translate(-2px, 1px); }
 }
 
 @keyframes glitchBottom {
     0%, 100% { transform: translate(0); }
-    25% { transform: translate(3px, 2px); }
-    50% { transform: translate(-3px, -2px); }
+    25% { transform: translate(4px, 2px); }
+    50% { transform: translate(-4px, -2px); }
     75% { transform: translate(2px, -1px); }
 }
 
-/* Кнопки */
+/* КАРТА МЕСЯЦА */
+.featured-map {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--border);
+    max-width: 800px;
+    margin: 0 auto 80px;
+}
+
+.featured-info {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.featured-info h2 {
+    font-family: 'Unbounded', sans-serif;
+    text-transform: uppercase;
+    font-size: 24px;
+}
+
+.featured-info p {
+    color: #ccc;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.featured-image {
+    background: #222;
+    border-left: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    font-size: 40px;
+    font-weight: 900;
+}
+
 .btn {
     display: inline-block;
     padding: 15px 30px;
@@ -176,8 +219,46 @@ main {
     box-shadow: 0 0 20px var(--neon);
 }
 
-/* Список ресурсов */
-.resources-list {
+/* СТАТИСТИКА */
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.stat-box {
+    border: 1px solid var(--border);
+    padding: 30px;
+    text-align: center;
+    min-width: 150px;
+    transition: 0.3s;
+}
+
+.stat-box:hover {
+    border-color: var(--text);
+    box-shadow: 0 0 20px var(--neon);
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    display: block;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 40px;
+    font-weight: 900;
+    color: var(--text);
+}
+
+.stat-label {
+    margin-top: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #aaa;
+}
+
+/* КНОПКИ И ССЫЛКИ */
+.resources-list, .item-list {
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -185,59 +266,35 @@ main {
     margin: 0 auto;
 }
 
-.resource-btn {
+.resource-btn, .item {
     display: block;
-    padding: 20px;
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text);
+    padding: 18px;
+    border: 1px solid #444;
+    color: #fff;
     text-decoration: none;
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 2px;
+    background: rgba(255, 255, 255, 0.02);
     transition: 0.3s;
-}
-
-.resource-btn:hover {
-    border-color: var(--text);
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 0 15px var(--neon);
-}
-
-/* Списки карт и создателей */
-.item-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.item {
-    padding: 20px;
-    border: 1px solid var(--border);
-    text-align: center;
-    font-size: 18px;
-    font-weight: 700;
-    text-transform: uppercase;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-.item:hover {
-    border-color: var(--text);
-    box-shadow: 0 0 15px var(--neon);
-    background: rgba(255, 255, 255, 0.05);
+.resource-btn:hover, .item:hover {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
-/* Модалки */
+/* МОДАЛКИ */
 .modal-overlay {
     display: none;
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    z-index: 1000;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
     justify-content: center;
     align-items: center;
 }
@@ -246,7 +303,7 @@ main {
 
 .modal {
     background: #0a0a0a;
-    border: 1px solid var(--border);
+    border: 1px solid #444;
     padding: 40px;
     width: 90%;
     max-width: 400px;
@@ -257,12 +314,13 @@ main {
 
 .modal h3 {
     font-family: 'Unbounded', sans-serif;
-    font-size: 24px;
-    margin-bottom: 20px;
-    text-shadow: 0 0 10px var(--neon);
+    font-size: 22px;
+    margin-bottom: 15px;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
 }
 
 .modal p {
+    color: #aaa;
     margin-bottom: 30px;
     line-height: 1.6;
 }
@@ -273,80 +331,85 @@ main {
     gap: 10px;
 }
 
-.btn-download {
-    background: #00cc00;
-    color: #000;
-    font-weight: 900;
+.btn-download, .btn-back {
     padding: 15px;
+    border: 1px solid #fff;
+    background: transparent;
+    color: #fff;
+    font-weight: 700;
     text-transform: uppercase;
-    border: none;
     cursor: pointer;
     font-family: 'Inter', sans-serif;
-    letter-spacing: 1px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    transition: 0.3s;
 }
 
 .btn-download:hover {
-    background: #00ff00;
-    box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
-}
-
-.btn-back {
-    background: #cc0000;
-    color: #fff;
-    font-weight: 900;
-    padding: 15px;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
-    letter-spacing: 1px;
+    background: #fff;
+    color: #000;
+    box-shadow: 0 0 20px #fff;
 }
 
 .btn-back:hover {
-    background: #ff0000;
-    box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.2);
 }
 
-/* Фоновые фигуры для модалок */
+/* ФОНОВЫЕ ФИГУРЫ */
 .shapes-bg {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    overflow: hidden;
+    z-index: 1;
     pointer-events: none;
-    z-index: -1;
 }
 
 .shape {
     position: absolute;
-    opacity: 0.1;
-    border: 1px solid #fff;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    background: transparent;
+    z-index: 1;
 }
 
 .command-block {
     position: absolute;
-    opacity: 0.1;
-    border: 2px solid #fff;
+    border: 2px solid rgba(255, 255, 255, 0.4);
     width: 50px; height: 50px;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 1;
 }
 
-/* Адаптив */
+.modal h3, .modal p, .modal-buttons {
+    position: relative;
+    z-index: 2;
+}
+
+/* АДАПТИВ */
 @media (max-width: 768px) {
+    .glitch { font-size: 40px; letter-spacing: 2px; }
     header {
         flex-direction: column;
-        gap: 20px;
+        gap: 15px;
+        padding: 15px;
     }
-    nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
+    nav ul { flex-wrap: wrap; justify-content: center; gap: 15px; }
+    .page-title { font-size: 30px; letter-spacing: 2px; }
+    main { padding: 30px 15px; }
+    .featured-map {
+        grid-template-columns: 1fr;
     }
-    main {
-        padding: 30px 20px;
+    .featured-image {
+        border-left: none;
+        border-top: 1px solid var(--border);
+        height: 150px;
     }
-    .page-title {
-        font-size: 30px;
+    .stats {
+        flex-direction: column;
+        align-items: center;
     }
-    .glitch {
-        font-size: 40px;
-        letter-spacing: 4px;
+    .stat-box {
+        width: 100%;
+        max-width: 300px;
     }
 }
