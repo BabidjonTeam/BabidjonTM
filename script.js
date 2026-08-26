@@ -31,7 +31,6 @@ function openCreatorModal(name) {
     const shapesBg = document.getElementById('shapesBg');
     
     if (name === 'Okone' || name === 'Ustreal') {
-        // Генерация квадратов и треугольников
         for (let i = 0; i < 15; i++) {
             const shape = document.createElement('div');
             shape.className = 'shape';
@@ -41,12 +40,11 @@ function openCreatorModal(name) {
             shape.style.left = Math.random() * 100 + '%';
             shape.style.top = Math.random() * 100 + '%';
             if (Math.random() > 0.5) {
-                shape.style.borderRadius = '50%'; // круг если random
+                shape.style.borderRadius = '50%';
             }
             shapesBg.appendChild(shape);
         }
     } else {
-        // Генерация командных блоков (квадраты)
         for (let i = 0; i < 10; i++) {
             const block = document.createElement('div');
             block.className = 'command-block';
