@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Unbounded:wght@400;900&display=swap');
+
+:root {
+    --bg: #000;
+    --text: #fff;
+    --border: #333;
+    --neon: rgba(255, 255, 255, 0.8);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Навигация */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 50px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: #000;
+    z-index: 100;
+}
+
+.logo {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--text);
+    text-decoration: none;
+    text-shadow: 0 0 10px var(--neon);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+nav a.active {
+    text-shadow: 0 0 15px var(--neon);
+}
+
+nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--text);
+    box-shadow: 0 0 10px var(--neon);
+}
+
+/* Основной контейнер */
+main {
+    flex: 1;
+    padding: 60px 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.page-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 50px;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 60px;
+    text-shadow: 0 0 20px var(--neon);
+}
+
+/* Главная (Glitch) */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.glitch {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 80px;
+    font-weight: 900;
+    letter-spacing: 8px;
+    position: relative;
+    color: #fff;
+    text-shadow: 0 0 20px var(--neon);
+    animation: glitch 3s infinite;
+    text-align: center;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    animation: glitchTop 3s infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+    opacity: 0.7;
+}
+
+.glitch::after {
+    animation: glitchBottom 3s infinite;
+    clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+    opacity: 0.7;
+}
+
+@keyframes glitch {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 1px); }
+    40% { transform: translate(2px, -1px); }
+    60% { transform: translate(-1px, 2px); }
+    80% { transform: translate(1px, -2px); }
+}
+
+@keyframes glitchTop {
+    0%, 100% { transform: translate(0); }
+    25% { transform: translate(-3px, -2px); }
+    50% { transform: translate(3px, 2px); }
+    75% { transform: translate(-2px, 1px); }
+}
+
+@keyframes glitchBottom {
+    0%, 100% { transform: translate(0); }
+    25% { transform: translate(3px, 2px); }
+    50% { transform: translate(-3px, -2px); }
+    75% { transform: translate(2px, -1px); }
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background: var(--text);
+    color: var(--bg);
+    font-weight: 900;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    box-shadow: 0 0 20px var(--neon);
+}
+
+/* Список ресурсов */
+.resources-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.resource-btn {
+    display: block;
+    padding: 20px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.resource-btn:hover {
+    border-color: var(--text);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 15px var(--neon);
+}
+
+/* Списки карт и создателей */
+.item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.item {
+    padding: 20px;
+    border: 1px solid var(--border);
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.item:hover {
+    border-color: var(--text);
+    box-shadow: 0 0 15px var(--neon);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Модалки */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay.active { display: flex; }
+
+.modal {
+    background: #0a0a0a;
+    border: 1px solid var(--border);
+    padding: 40px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.modal h3 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px var(--neon);
+}
+
+.modal p {
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-download {
+    background: #00cc00;
+    color: #000;
+    font-weight: 900;
+    padding: 15px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 1px;
+}
+
+.btn-download:hover {
+    background: #00ff00;
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+}
+
+.btn-back {
+    background: #cc0000;
+    color: #fff;
+    font-weight: 900;
+    padding: 15px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 1px;
+}
+
+.btn-back:hover {
+    background: #ff0000;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+}
+
+/* Фоновые фигуры для модалок */
+.shapes-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.shape {
+    position: absolute;
+    opacity: 0.1;
+    border: 1px solid #fff;
+}
+
+.command-block {
+    position: absolute;
+    opacity: 0.1;
+    border: 2px solid #fff;
+    width: 50px; height: 50px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    main {
+        padding: 30px 20px;
+    }
+    .page-title {
+        font-size: 30px;
+    }
+    .glitch {
+        font-size: 40px;
+        letter-spacing: 4px;
+    }
+}
